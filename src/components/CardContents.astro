@@ -1,0 +1,63 @@
+---
+import ContactCard from "./ContactCard.astro";
+import Eyebrow from "./Eyebrow.astro";
+import SectionHeading from "./SectionHeading.astro";
+
+const rows = ["Кто это", "Откуда знакомы", "Как связаться", "О чём договорились"];
+---
+
+<section id="card" class="relative border-t border-line">
+  <!-- Two thin threads in the background, desktop only -->
+  <svg
+    class="absolute inset-0 hidden size-full md:block"
+    viewBox="0 0 1440 800"
+    preserveAspectRatio="xMidYMid slice"
+    aria-hidden="true"
+  >
+    <defs>
+      <linearGradient id="card-thread-lavender" x1="0" y1="0" x2="1440" y2="0" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-opacity="0" style="stop-color: var(--color-thread-lavender)"></stop>
+        <stop offset="0.6" style="stop-color: var(--color-thread-lavender)"></stop>
+        <stop offset="1" style="stop-color: var(--color-thread-lavender-light)"></stop>
+      </linearGradient>
+      <linearGradient id="card-thread-olive" x1="0" y1="0" x2="1440" y2="0" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-opacity="0" style="stop-color: var(--color-thread-olive)"></stop>
+        <stop offset="0.6" style="stop-color: var(--color-thread-olive)"></stop>
+        <stop offset="1" style="stop-color: var(--color-thread-peach)"></stop>
+      </linearGradient>
+    </defs>
+    <path
+      d="M300 900 C 700 700, 900 200, 1200 260 C 1400 300, 1380 560, 1600 520"
+      stroke="url(#card-thread-lavender)"
+      stroke-width="3"
+      fill="none"></path>
+    <path
+      d="M200 -40 C 600 120, 1000 600, 1250 480 C 1420 400, 1460 200, 1600 180"
+      stroke="url(#card-thread-olive)"
+      stroke-width="3"
+      fill="none"></path>
+  </svg>
+
+  <div
+    class="container-page relative flex flex-col gap-8 px-5 py-16 md:flex-row md:flex-wrap md:items-center md:gap-16 md:px-6 md:py-26"
+  >
+    <div class="flex min-w-0 flex-col gap-8 md:grow md:basis-115 md:gap-10">
+      <div class="flex flex-col gap-3 md:gap-4">
+        <Eyebrow>Что внутри карточки</Eyebrow>
+        <SectionHeading>Всё о человеке на одной странице</SectionHeading>
+      </div>
+      <ul>
+        {
+          rows.map((row) => (
+            <li class="border-t border-line-strong py-4 font-semibold last:border-b md:py-5.5 md:font-display md:text-30 md:leading-snug">
+              {row}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="flex min-w-0 justify-center md:grow md:basis-95">
+      <ContactCard />
+    </div>
+  </div>
+</section>

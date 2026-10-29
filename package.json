@@ -1,0 +1,20 @@
+{
+  "name": "landing",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "packageManager": "pnpm@12.10.1",
+  "dependencies": {
+    "@fontsource/cormorant-garamond": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@fontsource/manrope": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.0",
+    "astro": "^7.4.0",
+    "tailwindcss": "^4.3.0"
+  }
+}

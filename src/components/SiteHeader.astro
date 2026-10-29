@@ -1,0 +1,21 @@
+---
+import { APP_URL } from "../config";
+import ButtonLink from "./ButtonLink.astro";
+import LogoMark from "./icons/LogoMark.astro";
+---
+
+<header class="container-page relative z-2 flex items-center justify-between gap-3 px-5 py-4 md:flex-wrap md:gap-4 md:p-6">
+  <!-- min-h-11 keeps the logo link a 44px tap target -->
+  <a href="#top" class="flex min-h-11 items-center gap-2.5 md:gap-3">
+    <LogoMark class="size-8.5 md:size-10" />
+    <span class="font-display text-28 font-semibold tracking-slight md:text-30">Узелок</span>
+  </a>
+  <nav
+    aria-label="Основное меню"
+    class="hidden font-mono text-14 font-medium tracking-wide uppercase md:flex md:flex-wrap md:items-center md:gap-7"
+  >
+    <a href="#how" class="inline-flex min-h-11 items-center text-text-muted">Как это работает</a>
+    <a href="#card" class="inline-flex min-h-11 items-center text-text-muted">Что внутри</a>
+    <ButtonLink href={APP_URL} size="header">Завязать Узелок</ButtonLink>
+  </nav>
+</header>

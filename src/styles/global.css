@@ -1,0 +1,18 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+/*
+ * Page container: up to 1280px of content plus side padding, centered.
+ * content-box keeps the padding outside the 1280px, as in the reference.
+ */
+@utility container-page {
+  box-sizing: content-box;
+  max-width: var(--container-page);
+  margin-inline: auto;
+}
+
+@layer base {
+  body {
+    @apply bg-bg font-sans text-17 leading-body text-text md:text-18;
+  }
+}

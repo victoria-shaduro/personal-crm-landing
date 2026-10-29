@@ -1,0 +1,33 @@
+---
+import ArrowIcon from "./icons/ArrowIcon.astro";
+
+interface Props {
+  href: string;
+  variant?: "primary" | "secondary";
+  // "header" is the compact button in the desktop header
+  size?: "default" | "header";
+  // Wider side padding on desktop, used by the final call to action
+  wide?: boolean;
+}
+
+const { href, variant = "primary", size = "default", wide = false } = Astro.props;
+const isPrimary = variant === "primary";
+---
+
+<a
+  href={href}
+  class:list={[
+    "items-center rounded-xs font-mono tracking-wide uppercase",
+    isPrimary ? "bg-accent font-bold text-on-accent" : "bg-button-secondary font-medium text-text",
+    size === "header"
+      ? "inline-flex min-h-11 gap-2.5 px-4.5 text-14"
+      : [
+          "flex min-h-15 px-5 text-15 md:inline-flex md:min-h-16 md:text-16",
+          wide ? "md:px-7" : "md:px-6",
+          isPrimary && "justify-between md:gap-12",
+        ],
+  ]}
+>
+  <slot />
+  {isPrimary && <ArrowIcon class={size === "header" ? "size-3" : "size-3.5"} />}
+</a>

@@ -1,0 +1,32 @@
+---
+// Decorative threads illustration: a cropped file for phones, the full one from 768px
+interface Image {
+  src: string;
+  width: number;
+  height: number;
+}
+
+interface Props {
+  desktop: Image;
+  mobile: Image;
+  eager?: boolean;
+  class?: string;
+  imgClass?: string;
+}
+
+const { desktop, mobile, eager = false, class: className, imgClass } = Astro.props;
+---
+
+<picture class:list={["block", className]}>
+  <source media="(max-width: 767px)" srcset={mobile.src} width={mobile.width} height={mobile.height} />
+  <img
+    src={desktop.src}
+    width={desktop.width}
+    height={desktop.height}
+    alt=""
+    loading={eager ? "eager" : "lazy"}
+    fetchpriority={eager ? "high" : undefined}
+    decoding="async"
+    class:list={["block w-full object-cover", imgClass]}
+  />
+</picture>

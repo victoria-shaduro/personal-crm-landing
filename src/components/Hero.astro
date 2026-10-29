@@ -1,0 +1,38 @@
+---
+import { APP_URL } from "../config";
+import ButtonLink from "./ButtonLink.astro";
+import Eyebrow from "./Eyebrow.astro";
+import ThreadsPicture from "./ThreadsPicture.astro";
+
+// Desktop column: up to 1280px including the side padding (border-box), as in the reference
+const column = "relative z-2 flex flex-col px-5 md:mx-auto md:w-full md:max-w-page md:px-6";
+---
+
+<section id="top" class="relative flex flex-col md:min-h-220">
+  <div class:list={[column, "gap-5 pt-8 md:gap-7 md:pt-14"]}>
+    <Eyebrow>Личная CRM</Eyebrow>
+    <h1
+      class="font-display text-50 leading-display-mobile font-medium tracking-tight md:max-w-headline md:text-hero md:leading-display md:tracking-tighter"
+    >
+      Помните людей, а&nbsp;не&nbsp;только их&nbsp;номера
+    </h1>
+    <p class="text-18 text-text-muted md:max-w-lead md:text-21">Личная записная книжка для тех, кого вы знаете лично.</p>
+  </div>
+
+  <!-- Phones: between the subtitle and the buttons. Desktop: under the buttons, slightly overlapped by them -->
+  <ThreadsPicture
+    desktop={{ src: "/images/threads-hero.svg", width: 1440, height: 620 }}
+    mobile={{ src: "/images/threads-hero-mobile.svg", width: 620, height: 525 }}
+    eager
+    class="relative z-1 md:order-last md:-mt-10"
+    imgClass="h-82.5 md:h-140"
+  />
+
+  <div class:list={[column, "gap-5 md:mt-9 md:gap-7"]}>
+    <div class="flex flex-col gap-1 md:flex-row md:flex-wrap md:items-stretch">
+      <ButtonLink href={APP_URL}>Завязать Узелок</ButtonLink>
+      <ButtonLink href="#how" variant="secondary">Как это работает</ButtonLink>
+    </div>
+    <p class="text-14 text-text-subtle md:text-15">Не для продаж. Чтобы не терять людей и контекст.</p>
+  </div>
+</section>

@@ -1,0 +1,16 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+
+# generated types
+.astro/
+
+# secrets: real values live only in .env
+.env
+.env.*
+!.env.example
+
+# macOS
+.DS_Store

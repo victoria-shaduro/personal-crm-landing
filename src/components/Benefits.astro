@@ -1,0 +1,41 @@
+---
+import MinimalIcon from "./icons/MinimalIcon.astro";
+import SearchIcon from "./icons/SearchIcon.astro";
+import SyncIcon from "./icons/SyncIcon.astro";
+import SectionHeading from "./SectionHeading.astro";
+
+const benefits = [
+  {
+    icon: SearchIcon,
+    title: "Быстрый поиск",
+    text: "Начните вводить имя, и нужный человек уже перед вами.",
+  },
+  {
+    icon: SyncIcon,
+    title: "Одни и те же контакты везде",
+    text: "Одно приложение на все устройства, ничего не нужно переносить.",
+  },
+  {
+    icon: MinimalIcon,
+    title: "Ничего лишнего",
+    text: "Ни воронок, ни сделок, ни статусов. Только люди и ваши заметки о них.",
+  },
+];
+---
+
+<section class="border-t border-line">
+  <div class="container-page flex flex-col gap-10 px-5 py-16 md:gap-16 md:px-6 md:py-26">
+    <SectionHeading>Сделано, чтобы просто работать</SectionHeading>
+    <ul class="flex flex-col gap-9 md:grid md:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] md:gap-12">
+      {
+        benefits.map(({ icon: Icon, title, text }) => (
+          <li class="flex flex-col gap-3 md:gap-4">
+            <Icon class="size-12 md:size-14" />
+            <h3 class="font-display text-28 leading-snug font-semibold md:text-32">{title}</h3>
+            <p class="text-text-muted">{text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

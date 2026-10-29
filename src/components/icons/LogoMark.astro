@@ -1,0 +1,22 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<svg class={className} viewBox="0 0 40 40" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="logo-gradient" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0" style="stop-color: var(--color-thread-olive)"></stop>
+      <stop offset="0.55" style="stop-color: var(--color-thread-peach)"></stop>
+      <stop offset="1" style="stop-color: var(--color-thread-lavender)"></stop>
+    </linearGradient>
+  </defs>
+  <path
+    d="M3 26 C 10 26, 12 9, 20 9 C 28 9, 28 22, 20 22 C 12 22, 13 33, 22 33 C 29 33, 31 26, 37 24"
+    stroke="url(#logo-gradient)"
+    stroke-width="4"
+    stroke-linecap="round"></path>
+</svg>

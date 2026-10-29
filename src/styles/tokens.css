@@ -1,0 +1,94 @@
+/*
+ * Design tokens of the landing (specs/02-лендинг.md, "Дизайн-токены").
+ * Tailwind defaults are reset, so components can only use these values.
+ */
+@theme {
+  --color-*: initial;
+  --font-*: initial;
+  --text-*: initial;
+  --leading-*: initial;
+  --tracking-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --container-*: initial;
+
+  /* Colors */
+  --color-bg: #0a0a0b;
+  --color-surface: #141416;
+  --color-surface-raised: #1a1a1d;
+  --color-surface-inset: #0e0e10;
+  --color-button-secondary: #1c1c1f;
+  --color-line: #232326;
+  --color-line-strong: #2a2a2e;
+  --color-text: #f2efea;
+  --color-text-muted: #bdb8af;
+  --color-text-subtle: #8f8a82;
+  --color-text-mono: #d6d1c8;
+  --color-accent: #e8783a;
+  --color-on-accent: #111111;
+  --color-thread-olive: #c9c46a;
+  --color-thread-peach: #ee9a63;
+  --color-thread-lavender: #9c82e6;
+  --color-thread-lavender-text: #a991ea;
+  /* End of the lavender thread gradient behind the contact card */
+  --color-thread-lavender-light: #c9b5f5;
+  --color-avatar-bg: #2a2540;
+  --color-avatar-text: #e4dbfb;
+
+  /* Fonts */
+  --font-display: "Cormorant Garamond", serif;
+  --font-sans: "Manrope", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Font sizes. Sizes without a line height inherit it from the parent */
+  --text-12: 12px;
+  --text-13: 13px;
+  --text-14: 14px;
+  --text-15: 15px;
+  --text-16: 16px;
+  --text-17: 17px;
+  --text-18: 18px;
+  --text-20: 20px;
+  --text-21: 21px;
+  --text-26: 26px;
+  --text-28: 28px;
+  --text-30: 30px;
+  --text-32: 32px;
+  --text-40: 40px;
+  --text-50: 50px;
+  /* Fluid desktop headings */
+  --text-hero: clamp(52px, 7.6vw, 112px);
+  --text-section: clamp(40px, 5vw, 72px);
+  --text-final: clamp(48px, 6.6vw, 96px);
+
+  /* Line heights */
+  --leading-display: 0.95;
+  --leading-display-mobile: 0.98;
+  --leading-heading: 1;
+  --leading-snug: 1.1;
+  --leading-body: 1.55;
+
+  /* Letter spacing */
+  --tracking-tighter: -0.035em;
+  --tracking-tight: -0.03em;
+  --tracking-snug: -0.025em;
+  --tracking-slight: -0.01em;
+  --tracking-wide: 0.04em;
+  --tracking-wider: 0.08em;
+
+  /* Corners */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+
+  /* Shadows */
+  --shadow-card: 0 40px 80px -30px rgb(156 130 230 / 0.35);
+  --shadow-card-mobile: 0 30px 60px -30px rgb(156 130 230 / 0.4);
+
+  /* Widths */
+  --container-page: 1280px;
+  --container-cta: 960px;
+  --container-headline: 11em;
+  --container-lead: 30em;
+  /* 440px of content + 28px padding + 1px border on each side, as rendered in the reference */
+  --container-contact-card: 498px;
+}

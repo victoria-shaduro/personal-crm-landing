@@ -1,0 +1,53 @@
+---
+import Eyebrow from "./Eyebrow.astro";
+import SectionHeading from "./SectionHeading.astro";
+
+const steps = [
+  {
+    number: "001",
+    title: "Откройте и сразу увидите всех",
+    text: "Список ваших контактов на первом экране, без лишних меню.",
+    stripe: "border-thread-olive",
+    numberColor: "text-thread-olive",
+  },
+  {
+    number: "002",
+    title: "Добавьте человека",
+    text: "Имя, телефон, почта и пара слов о том, откуда вы знакомы. Контакт сразу появится в списке.",
+    stripe: "border-thread-peach",
+    numberColor: "text-thread-peach",
+  },
+  {
+    number: "003",
+    title: "Найдите и допишите",
+    text: "Поговорили, нашли человека по имени и записали, о чём договорились.",
+    stripe: "border-thread-lavender",
+    numberColor: "text-thread-lavender-text",
+  },
+];
+---
+
+<section id="how" class="border-t border-line">
+  <div class="container-page flex flex-col gap-9 px-5 py-16 md:gap-16 md:px-6 md:py-26">
+    <div class="flex flex-col gap-3 md:gap-4">
+      <Eyebrow>Как это работает</Eyebrow>
+      <SectionHeading>Три шага, без настройки</SectionHeading>
+    </div>
+    <ol class="grid gap-1 md:grid-cols-[repeat(auto-fit,minmax(300px,1fr))]">
+      {
+        steps.map((step) => (
+          <li
+            class:list={[
+              "flex flex-col gap-3.5 border-t-4 bg-surface px-6 pt-7 pb-7.5 md:gap-4.5 md:px-8 md:pt-9 md:pb-10",
+              step.stripe,
+            ]}
+          >
+            <span class:list={["font-mono text-14 font-bold md:text-15", step.numberColor]}>{step.number}</span>
+            <h3 class="font-display text-28 leading-snug font-semibold md:text-32">{step.title}</h3>
+            <p class="text-text-muted">{step.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

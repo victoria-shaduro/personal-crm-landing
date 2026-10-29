@@ -1,0 +1,36 @@
+---
+// Fonts are self-hosted from @fontsource: no requests to Google
+import "@fontsource/cormorant-garamond/500.css";
+import "@fontsource/cormorant-garamond/600.css";
+import "@fontsource/manrope/400.css";
+import "@fontsource/manrope/500.css";
+import "@fontsource/manrope/600.css";
+import "@fontsource/jetbrains-mono/500.css";
+import "@fontsource/jetbrains-mono/700.css";
+import "../styles/global.css";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../config";
+
+// Astro.site comes from `site` in astro.config.mjs; URL encodes the Cyrillic domain as punycode
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{SITE_TITLE}</title>
+    <meta name="description" content={SITE_DESCRIPTION} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={canonicalUrl} />
+    <!-- Link preview in social networks and messengers; a preview image is not chosen yet -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={SITE_TITLE} />
+    <meta property="og:description" content={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
