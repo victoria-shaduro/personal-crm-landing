@@ -1,0 +1,60 @@
+name: Deploy landing
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: personal-crm-landing-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out the commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "24"
+          package-manager-cache: false
+
+      - name: Set up pnpm from package.json
+        uses: pnpm/action-setup@f40ffcd9367d9f12939873eb1018b921a783ffaa # v4
+
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build the static landing
+        run: |
+          pnpm build
+          node --input-type=module <<'JS'
+          import { readFileSync, writeFileSync } from "node:fs";
+          import { createHash } from "node:crypto";
+          const deployment = {
+            commit: process.env.GITHUB_SHA,
+            indexSha256: createHash("sha256").update(readFileSync("dist/index.html")).digest("hex"),
+          };
+          writeFileSync("dist/deployment.json", JSON.stringify(deployment) + "\n");
+          JS
+
+      - name: Upload dist to the landing directory
+        run: bash deploy/upload.sh
+        env:
+          DEPLOY_HOST: ${{ vars.DEPLOY_HOST }}
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ vars.DEPLOY_KNOWN_HOSTS }}
+
+      - name: Verify the public homepage and deployed commit
+        run: bash deploy/verify.sh
+        env:
+          LANDING_URL: ${{ vars.LANDING_URL }}
